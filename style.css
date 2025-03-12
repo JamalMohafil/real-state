@@ -1,0 +1,789 @@
+:root {
+    /* Light mode colors */
+    --primary-color: #2c3e50;
+    --primary-color-2: #2c3e50;
+    --secondary-color: #1abc9c;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --light-text: #fff;
+    --dark-text: #2c3e50;
+    
+    /* Light mode background colors */
+    --bg-color: #fff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #fff;
+    
+    /* Light mode border and shadow colors */
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --border-radius: 8px;
+    --card-shadow: 0 4px 15px var(--shadow-color);
+    --transition-speed: 0.3s;
+}
+
+/* Dark mode color scheme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark mode colors */
+        --primary-color: #203041;
+        --primary-color-2: #247ed9;
+        --secondary-color: #0d8d71;
+        --accent-color: #e67e22;
+        --text-color: #e5e7eb;
+        --light-text: #fff;
+        --dark-text: #e5e7eb;
+       
+        /* Dark mode background colors */
+        --bg-color: #121212;
+        --bg-secondary: #1e1e1e;
+        --bg-card: #252525;
+       
+        /* Dark mode border and shadow colors */
+        --border-color: #2d2d2d;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    color: var(--primary-color-2);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.logo h1 {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    opacity: 0.8;
+    padding: 0.5rem;
+    font-weight: 500;
+    transition: opacity var(--transition-speed);
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    opacity: 1;
+}
+
+.cta-btn {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: background-color var(--transition-speed);
+}
+
+.cta-btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav {
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        flex-basis: 100%;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    
+    .nav-links.active,.cta-btn.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+    
+    .cta-btn {
+        display: none;
+        margin: 0 auto;
+        margin-top: 1rem;
+        
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://selecthouse.co/wp-content/uploads/2021/08/cresta-bella-hills-5.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-text);
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 500px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* Search Box */
+.search-box {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.search-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.search-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+}
+
+.search-item label {
+    display: block;
+    color: var(--dark-text);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.search-item select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.search-btn {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: background-color var(--transition-speed);
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.search-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .search-item {
+        min-width: 100%;
+    }
+}
+
+/* Featured Properties Section */
+.featured {
+    padding: 5rem 2rem;
+    background-color: var(--bg-secondary);
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.property-card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed);
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.property-image {
+    height: 200px;
+    background-color: #ddd;
+    position: relative;
+}
+
+/* We'll create specific classes for each property image */
+.property-image-1 {
+    background: url('https://selecthouse.co/wp-content/uploads/2021/08/cresta-bella-hills-5.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.property-image-2 {
+    background: url('https://cdn.properties.emaar.com/wp-content/uploads/2020/06/01_BLOG_BUY_PROPERTY.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.property-image-3 {
+    background: url('https://images.aqar.fm/webp/350x0/props/040070628_1740157485026.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.property-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.property-details {
+    padding: 1.5rem;
+}
+
+.property-details h3 {
+    color: var(--primary-color-2);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.price {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.price::after {
+    content: " ريال";
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.property-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.details-btn {
+    background-color: transparent;
+    color: var(--primary-color-2);
+    border: 1px solid var(--primary-color-2);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    width: 100%;
+    transition: all var(--transition-speed);
+}
+
+.details-btn:hover {
+    background-color: var(--primary-color-2);
+    color: var(--light-text);
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.view-all-btn {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: background-color var(--transition-speed);
+}
+
+.view-all-btn:hover {
+    background-color: var(--dark-text);
+}
+
+@media (max-width: 768px) {
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 2rem;
+    background-color: var(--bg-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    padding: 2rem;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.service-icon i {
+    font-size: 2rem;
+}
+
+.service-card h3 {
+    color: var(--primary-color-2);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.service-card p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 2rem;
+    background-color: var(--bg-secondary);
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.testimonial-content p {
+    color: var(--text-color);
+    font-style: italic;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.testimonial-content p::before,
+.testimonial-content p::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--primary-color-2);
+    opacity: 0.5;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuUo4HVkiC9VWNiYtk1VsrLbc3LYNJnShBxw&s');
+    background-size: cover;
+    margin-left: 1rem;
+}
+
+.author-info h4 {
+    color: var(--primary-color-2);
+    font-size: 1rem;
+}
+
+.author-info p {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        min-width: 100%;
+    }
+    
+    .testimonials {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Call to Action Section */
+.cta {
+    padding: 5rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://media.istockphoto.com/id/1450058572/photo/businessman-using-a-laptop-and-touching-on-virtual-screen-contact-icons-consists-of-telephone.jpg?s=612x612&w=0&k=20&c=R5wzCGHu6ZS-8EQpJ2Z1tkSbKGGdJH4apVhFM18EXSM=');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--light-text);
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .cta {
+        padding: 3rem 1rem;
+    }
+    
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 4rem 2rem 1rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.footer-column p {
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed);
+}
+
+.social-icons a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.footer-column ul li {
+    margin-bottom: 0.7rem;
+}
+
+.footer-column ul li a {
+    opacity: 0.8;
+    transition: all var(--transition-speed);
+}
+
+.footer-column ul li a:hover {
+    opacity: 1;
+    padding-right: 5px;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.newsletter input {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    outline: 0;
+    border: 2px solid transparent;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter button {
+    padding: 0.6rem 1.2rem;
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    border-radius: var(--border-radius);
+    border: 0;
+    transition: background-color var(--transition-speed);
+}
+
+.newsletter button:hover {
+    background-color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .footer-column {
+        min-width: 100%;
+    }
+    
+    .newsletter input {
+        width: 100%;
+    }
+    
+    footer {
+        padding: 3rem 1rem 1rem;
+    }
+}
+
+/* Adjustments for specific property images */
+@media screen and (max-width: 768px) {
+    .property-image, 
+    .property-image-1, 
+    .property-image-2, 
+    .property-image-3 {
+        height: 180px;
+    }
+}
+
+/* Additional Responsive Adjustments */
+@media screen and (max-width: 480px) {
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .property-features {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .search-box {
+        padding: 1rem;
+    }
+}
+
+/* Add this JavaScript to make the mobile menu work */
+/* 
+
+*/
